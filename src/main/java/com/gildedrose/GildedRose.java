@@ -15,29 +15,21 @@ class GildedRose {
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
             if (item.isProductOf(PRODUCT_AGED_BRIE)) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
+                item.upgradeQualityIfLessThanLimit();
             } else if (item.isProductOf(PRODUCT_BACKSTAGE_PASSES)) {
                 if (item.quality < 50) {
-                    item.quality = item.quality + 1;
+                    item.incrementQuality();
                     if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
+                        item.upgradeQualityIfLessThanLimit();
                     }
                     if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
+                        item.upgradeQualityIfLessThanLimit();
                     }
                 }
             } else if (item.isProductOf(PRODUCT_SULFURAS)) {
                 // empty
             } else {
-                if (item.quality > 0) {
-                    item.quality = item.quality - 1;
-                }
+                item.decrementQuality();
             }
 
             if (item.isProductOf(PRODUCT_SULFURAS)) {
@@ -47,17 +39,13 @@ class GildedRose {
 
             if (item.sellIn < 0) {
                 if (item.isProductOf(PRODUCT_AGED_BRIE)) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
-                    }
+                    item.upgradeQualityIfLessThanLimit();
                 } else if (item.isProductOf(PRODUCT_BACKSTAGE_PASSES)) {
                     item.quality = 0;
                 } else if (item.isProductOf(PRODUCT_SULFURAS)) {
                     // empty
                 } else {
-                    if (item.quality > 0) {
-                        item.quality = item.quality - 1;
-                    }
+                    item.decrementQuality();
                 }
 
             }

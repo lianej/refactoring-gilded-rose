@@ -22,4 +22,20 @@ public class Item {
     boolean isProductOf(String name) {
         return this.name.equals(name);
     }
+
+    void incrementQuality() {
+        quality++;
+    }
+
+    void decrementQuality() {
+        if (quality > 0) {
+            quality--;
+        }
+    }
+
+    void upgradeQualityIfLessThanLimit() {
+        if (quality < 50) {
+            incrementQuality();
+        }
+    }
 }

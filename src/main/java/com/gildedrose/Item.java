@@ -4,19 +4,19 @@ public class Item {
 
     public String name;
 
-    public int sellIn;
+    public int qualityGuaranteePeriod;
 
-    public int quality;
+    public int value;
 
-    public Item(String name, int sellIn, int quality) {
+    public Item(String name, int qualityGuaranteePeriod, int value) {
         this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
+        this.qualityGuaranteePeriod = qualityGuaranteePeriod;
+        this.value = value;
     }
 
     @Override
     public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+        return this.name + ", " + this.qualityGuaranteePeriod + ", " + this.value;
     }
 
     boolean isProductOf(String name) {
@@ -24,17 +24,17 @@ public class Item {
     }
 
     void incrementQuality() {
-        quality++;
+        value++;
     }
 
     void decrementQuality() {
-        if (quality > 0) {
-            quality--;
+        if (value > 0) {
+            value--;
         }
     }
 
     void upgradeQualityIfLessThanLimit() {
-        if (quality < 50) {
+        if (value < 50) {
             incrementQuality();
         }
     }

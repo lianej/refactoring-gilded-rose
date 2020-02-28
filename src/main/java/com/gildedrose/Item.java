@@ -1,19 +1,27 @@
 package com.gildedrose;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public class Item {
 
     protected String name;
 
     protected int qualityGuaranteePeriod;
 
-    protected int value;
+    protected ProductValue productValue;
+
+    public int getProductValue() {
+        return productValue.getValue();
+    }
+
+    public Item(String name, int qualityGuaranteePeriod, int productValue) {
+        this.name = name;
+        this.qualityGuaranteePeriod = qualityGuaranteePeriod;
+        this.productValue = new ProductValue(productValue);
+    }
 
     public static final String PRODUCT_SULFURAS = "Sulfuras, Hand of Ragnaros";
     public static final String PRODUCT_BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
@@ -34,19 +42,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return this.name + ", " + this.qualityGuaranteePeriod + ", " + this.value;
-    }
-
-    void downgradeValue() {
-        if (value > 0) {
-            value--;
-        }
-    }
-
-    void upgradeValue() {
-        if (value < 50) {
-            value++;
-        }
+        return this.name + ", " + this.qualityGuaranteePeriod + ", " + this.productValue.value;
     }
 
     void decrementQualityGuaranteePeriod() {
@@ -54,7 +50,7 @@ public class Item {
     }
 
     void updateValueIfExpiration() {
-        downgradeValue();
+        productValue.downgrade(1);
     }
 
     void updateQualityGuaranteePeriod() {
@@ -62,7 +58,7 @@ public class Item {
     }
 
     void updateValueBeforeQualityGuaranteePeriodUpdated() {
-        downgradeValue();
+        productValue.downgrade(1);
     }
 
     void updateValue() {

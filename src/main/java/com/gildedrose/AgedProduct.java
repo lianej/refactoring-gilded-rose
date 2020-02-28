@@ -8,11 +8,11 @@ public class AgedProduct extends Item{
 
     @Override
     void updateValueIfExpiration() {
-        upgradeValue();
+        productValue.upgrade(1);
     }
 
     @Override
     void updateValueBeforeQualityGuaranteePeriodUpdated() {
-        upgradeValue();
+        productValue.upgrade(1);
     }
 }

@@ -13,7 +13,7 @@ public class GildedRoseTest {
     public void foo() {
         Item item = updateQuality(Item.newItem("foo", 1, 5));
         assertEquals("foo", item.getName());
-        assertEquals(item.getValue(), 4);
+        assertEquals(item.getProductValue(), 4);
         assertEquals(item.getQualityGuaranteePeriod(), 0);
     }
 

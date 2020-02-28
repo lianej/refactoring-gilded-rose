@@ -5,8 +5,6 @@ import java.util.stream.Stream;
 class GildedRose {
     Item[] items;
 
-
-
     public GildedRose(Item[] items) {
         this.items = items;
     }

@@ -14,21 +14,21 @@ class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
-            if (item.isProductOf(PRODUCT_AGED_BRIE) || item.isProductOf(PRODUCT_BACKSTAGE_PASSES)) {
+            if (item.isProductOf(PRODUCT_AGED_BRIE)) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
-
-                    if (item.isProductOf(PRODUCT_BACKSTAGE_PASSES)) {
-                        if (item.sellIn < 11) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
+                }
+            } else if (item.isProductOf(PRODUCT_BACKSTAGE_PASSES)) {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
+                    if (item.sellIn < 11) {
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1;
                         }
-
-                        if (item.sellIn < 6) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
+                    }
+                    if (item.sellIn < 6) {
+                        if (item.quality < 50) {
+                            item.quality = item.quality + 1;
                         }
                     }
                 }

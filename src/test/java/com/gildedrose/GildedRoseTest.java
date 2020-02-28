@@ -12,9 +12,9 @@ public class GildedRoseTest {
     @Test
     public void foo() {
         Item item = updateQuality(new Item("foo", 1, 5));
-        assertEquals("foo", item.name);
-        assertEquals(item.value, 4);
-        assertEquals(item.qualityGuaranteePeriod, 0);
+        assertEquals("foo", item.getName());
+        assertEquals(item.getValue(), 4);
+        assertEquals(item.getQualityGuaranteePeriod(), 0);
     }
 
     @Test

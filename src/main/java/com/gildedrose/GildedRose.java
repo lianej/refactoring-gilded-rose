@@ -23,17 +23,17 @@ class GildedRose {
     }
 
     private void updateValueIfExpiration(Item item) {
-        if (item.qualityGuaranteePeriod >= 0) {
+        if (item.getQualityGuaranteePeriod() >= 0) {
             return;
         }
         if (item.isProductOf(PRODUCT_AGED_BRIE)) {
             item.upgradeValueIfLessThanLimit();
         } else if (item.isProductOf(PRODUCT_BACKSTAGE_PASSES)) {
-            item.value = 0;
+            item.setValue(0);
         } else if (item.isProductOf(PRODUCT_SULFURAS)) {
             // empty
         } else {
-            item.decrementQuality();
+            item.decrementValue();
         }
 
     }
@@ -42,26 +42,26 @@ class GildedRose {
         if (item.isProductOf(PRODUCT_SULFURAS)) {
             return;
         }
-        item.qualityGuaranteePeriod = item.qualityGuaranteePeriod - 1;
+        item.decrementQualityGuaranteePeriod();
     }
 
     private void updateValue(Item item) {
         if (item.isProductOf(PRODUCT_AGED_BRIE)) {
             item.upgradeValueIfLessThanLimit();
         } else if (item.isProductOf(PRODUCT_BACKSTAGE_PASSES)) {
-            if (item.value < 50) {
-                item.incrementQuality();
-                if (item.qualityGuaranteePeriod < 11) {
+            if (item.getValue() < 50) {
+                item.incrementValue();
+                if (item.getQualityGuaranteePeriod() < 11) {
                     item.upgradeValueIfLessThanLimit();
                 }
-                if (item.qualityGuaranteePeriod < 6) {
+                if (item.getQualityGuaranteePeriod() < 6) {
                     item.upgradeValueIfLessThanLimit();
                 }
             }
         } else if (item.isProductOf(PRODUCT_SULFURAS)) {
             // empty
         } else {
-            item.decrementQuality();
+            item.decrementValue();
         }
     }
 

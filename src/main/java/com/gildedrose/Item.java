@@ -1,18 +1,21 @@
 package com.gildedrose;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Item {
 
-    public String name;
+    private String name;
 
-    public int qualityGuaranteePeriod;
+    private int qualityGuaranteePeriod;
 
-    public int value;
-
-    public Item(String name, int qualityGuaranteePeriod, int value) {
-        this.name = name;
-        this.qualityGuaranteePeriod = qualityGuaranteePeriod;
-        this.value = value;
-    }
+    private int value;
 
     @Override
     public String toString() {
@@ -23,11 +26,11 @@ public class Item {
         return this.name.equals(name);
     }
 
-    void incrementQuality() {
+    void incrementValue() {
         value++;
     }
 
-    void decrementQuality() {
+    void decrementValue() {
         if (value > 0) {
             value--;
         }
@@ -35,7 +38,11 @@ public class Item {
 
     void upgradeValueIfLessThanLimit() {
         if (value < 50) {
-            incrementQuality();
+            incrementValue();
         }
+    }
+
+    void decrementQualityGuaranteePeriod() {
+        qualityGuaranteePeriod = getQualityGuaranteePeriod() - 1;
     }
 }

@@ -54,9 +54,6 @@ public class Item {
     }
 
     void updateValueIfExpiration() {
-        if (getQualityGuaranteePeriod() >= 0) {
-            return;
-        }
         downgradeValue();
     }
 
@@ -73,6 +70,8 @@ public class Item {
 
         updateQualityGuaranteePeriod();
 
-        updateValueIfExpiration();
+        if (getQualityGuaranteePeriod() < 0) {
+            updateValueIfExpiration();
+        }
     }
 }

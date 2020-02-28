@@ -32,12 +32,11 @@ class GildedRose {
                         }
                     }
                 }
+            } else if (item.isProductOf(PRODUCT_SULFURAS)) {
+                // empty
             } else {
                 if (item.quality > 0) {
-                    if (item.isProductOf(PRODUCT_SULFURAS)) {
-                    } else {
-                        item.quality = item.quality - 1;
-                    }
+                    item.quality = item.quality - 1;
                 }
             }
 
@@ -51,18 +50,16 @@ class GildedRose {
                     if (item.quality < 50) {
                         item.quality = item.quality + 1;
                     }
+                } else if (item.isProductOf(PRODUCT_BACKSTAGE_PASSES)) {
+                    item.quality = 0;
+                } else if (item.isProductOf(PRODUCT_SULFURAS)) {
+                    // empty
                 } else {
-                    if (item.isProductOf(PRODUCT_BACKSTAGE_PASSES)) {
-                        item.quality = 0;
-                    } else {
-                        if (item.quality > 0) {
-                            if (item.isProductOf(PRODUCT_SULFURAS)) {
-                                continue;
-                            }
-                            item.quality = item.quality - 1;
-                        }
+                    if (item.quality > 0) {
+                        item.quality = item.quality - 1;
                     }
                 }
+
             }
         }
     }

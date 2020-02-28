@@ -18,4 +18,8 @@ public class Item {
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
+
+    boolean isProductOf(String name) {
+        return this.name.equals(name);
+    }
 }

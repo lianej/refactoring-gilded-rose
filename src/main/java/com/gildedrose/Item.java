@@ -33,7 +33,7 @@ public class Item {
         }
     }
 
-    void upgradeQualityIfLessThanLimit() {
+    void upgradeValueIfLessThanLimit() {
         if (value < 50) {
             incrementQuality();
         }

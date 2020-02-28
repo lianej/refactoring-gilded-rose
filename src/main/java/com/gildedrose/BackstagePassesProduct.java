@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class BackstagePassesProduct extends Item {
+public class BackstagePassesProduct extends Product {
     public BackstagePassesProduct(String name, int qualityGuaranteePeriod, int value) {
         super(name, qualityGuaranteePeriod, value);
     }

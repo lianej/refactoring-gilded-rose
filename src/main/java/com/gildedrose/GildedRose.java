@@ -3,14 +3,14 @@ package com.gildedrose;
 import java.util.stream.Stream;
 
 class GildedRose {
-    Item[] items;
+    Product[] products;
 
-    public GildedRose(Item[] items) {
-        this.items = items;
+    public GildedRose(Product[] products) {
+        this.products = products;
     }
 
     public void updateValueOfItems() {
-        Stream.of(items).forEach(Item::updateValue);
+        Stream.of(products).forEach(Product::updateValue);
     }
 
 }

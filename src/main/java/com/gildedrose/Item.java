@@ -2,47 +2,77 @@ package com.gildedrose;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class Item {
 
-    private String name;
+    protected String name;
 
-    private int qualityGuaranteePeriod;
+    protected int qualityGuaranteePeriod;
 
-    private int value;
+    protected int value;
+
+    public static final String PRODUCT_SULFURAS = "Sulfuras, Hand of Ragnaros";
+    public static final String PRODUCT_BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+    public static final String PRODUCT_AGED_BRIE = "Aged Brie";
+
+    public static Item newItem(String name, int qualityGuaranteePeriod, int value) {
+        switch (name) {
+            case PRODUCT_SULFURAS:
+                return new EquipmentProduct(name, qualityGuaranteePeriod, value);
+            case PRODUCT_BACKSTAGE_PASSES:
+                return new BackstagePassesProduct(name, qualityGuaranteePeriod, value);
+            case PRODUCT_AGED_BRIE:
+                return new AgedProduct(name, qualityGuaranteePeriod, value);
+            default:
+                return new Item(name, qualityGuaranteePeriod, value);
+        }
+    }
 
     @Override
     public String toString() {
         return this.name + ", " + this.qualityGuaranteePeriod + ", " + this.value;
     }
 
-    boolean isProductOf(String name) {
-        return this.name.equals(name);
-    }
-
-    void incrementValue() {
-        value++;
-    }
-
-    void decrementValue() {
+    void downgradeValue() {
         if (value > 0) {
             value--;
         }
     }
 
-    void upgradeValueIfLessThanLimit() {
+    void upgradeValue() {
         if (value < 50) {
-            incrementValue();
+            value++;
         }
     }
 
     void decrementQualityGuaranteePeriod() {
         qualityGuaranteePeriod = getQualityGuaranteePeriod() - 1;
+    }
+
+    void updateValueIfExpiration() {
+        if (getQualityGuaranteePeriod() >= 0) {
+            return;
+        }
+        downgradeValue();
+    }
+
+    void updateQualityGuaranteePeriod() {
+        decrementQualityGuaranteePeriod();
+    }
+
+    void updateValueBeforeQualityGuaranteePeriodUpdated() {
+        downgradeValue();
+    }
+
+    void updateValue() {
+        updateValueBeforeQualityGuaranteePeriodUpdated();
+
+        updateQualityGuaranteePeriod();
+
+        updateValueIfExpiration();
     }
 }

@@ -3,16 +3,9 @@ package com.gildedrose;
 public class AgedProduct extends Product {
 
     public AgedProduct(String name, int qualityGuaranteePeriod, int value) {
-        super(name, qualityGuaranteePeriod, value);
+        this.name = name;
+        this.qualityGuaranteePeriod = new QualityGuaranteePeriod(qualityGuaranteePeriod);
+        this.productValue = new AgedProductValue(value);
     }
 
-    @Override
-   protected void updateValueIfExpiration() {
-        productValue.upgrade(1);
-    }
-
-    @Override
-    protected void updateValueBeforeQualityGuaranteePeriodUpdated() {
-        productValue.upgrade(1);
-    }
 }

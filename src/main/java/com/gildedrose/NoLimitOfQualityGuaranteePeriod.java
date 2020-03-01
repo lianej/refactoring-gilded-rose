@@ -6,7 +6,7 @@ public class NoLimitOfQualityGuaranteePeriod extends QualityGuaranteePeriod {
     }
 
     @Override
-    public void decrease() {
+    public void update() {
         //do nothing
     }
 

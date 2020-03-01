@@ -23,4 +23,12 @@ public class ProductValue {
     public void lossValue(){
         this.value = minValue;
     }
+
+    public void update(){
+        downgrade(1);
+    }
+
+    public void updateIfExpiration(){
+        downgrade(1);
+    }
 }

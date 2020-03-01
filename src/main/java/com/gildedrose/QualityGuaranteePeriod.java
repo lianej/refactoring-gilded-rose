@@ -10,7 +10,7 @@ public class QualityGuaranteePeriod {
         this.remainingDays = days;
     }
 
-    public void decrease(){
+    public void update(){
        this.remainingDays -= 1;
     }
 

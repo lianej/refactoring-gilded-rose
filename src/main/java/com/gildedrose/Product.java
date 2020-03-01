@@ -1,10 +1,12 @@
 package com.gildedrose;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Product {
 
     protected String name;
@@ -23,36 +25,18 @@ public class Product {
         this.productValue = new ProductValue(productValue);
     }
 
-    protected Product(String name, QualityGuaranteePeriod qualityGuaranteePeriod, ProductValue productValue) {
-        this.name = name;
-        this.qualityGuaranteePeriod = qualityGuaranteePeriod;
-        this.productValue = productValue;
-    }
-
     @Override
     public String toString() {
         return this.name + ", " + this.qualityGuaranteePeriod.getRemainingDays() + ", " + this.productValue.value;
     }
 
-    protected void updateValueIfExpiration() {
-        productValue.downgrade(1);
-    }
-
-    protected void updateQualityGuaranteePeriod() {
-        qualityGuaranteePeriod.decrease();
-    }
-
-    protected void updateValueBeforeQualityGuaranteePeriodUpdated() {
-        productValue.downgrade(1);
-    }
-
     public void updateValue() {
-        updateValueBeforeQualityGuaranteePeriodUpdated();
+        productValue.update();
 
-        updateQualityGuaranteePeriod();
+        qualityGuaranteePeriod.update();
 
         if (qualityGuaranteePeriod.isExpired()) {
-            updateValueIfExpiration();
+            productValue.updateIfExpiration();
         }
     }
 

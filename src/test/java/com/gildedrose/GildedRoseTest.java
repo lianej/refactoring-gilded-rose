@@ -14,7 +14,7 @@ public class GildedRoseTest {
         Product product = updateQuality(ProductFactory.newProduct("foo", 1, 5));
         assertEquals("foo", product.getName());
         assertEquals(4, product.getProductValue());
-        assertEquals(0, product.getQualityGuaranteePeriodObject().getRemainingDays());
+        assertEquals(0, product.getQualityGuaranteePeriod().getRemainingDays());
     }
 
     @Test

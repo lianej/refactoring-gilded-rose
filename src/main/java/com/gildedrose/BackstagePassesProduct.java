@@ -6,13 +6,13 @@ public class BackstagePassesProduct extends Product {
     }
 
     @Override
-    void updateValueIfExpiration() {
+   protected void updateValueIfExpiration() {
         productValue.lossValue();
     }
 
     @Override
-    void updateValueBeforeQualityGuaranteePeriodUpdated() {
-        int qualityGuaranteePeriod = getQualityGuaranteePeriodObject().getRemainingDays();
+    protected void updateValueBeforeQualityGuaranteePeriodUpdated() {
+        int qualityGuaranteePeriod = getQualityGuaranteePeriod().getRemainingDays();
         if (qualityGuaranteePeriod < 6) {
             productValue.upgrade(3);
         } else if (qualityGuaranteePeriod < 11) {

@@ -9,7 +9,7 @@ public class Product {
 
     protected String name;
 
-    protected QualityGuaranteePeriod qualityGuaranteePeriodObject;
+    protected QualityGuaranteePeriod qualityGuaranteePeriod;
 
     protected ProductValue productValue;
 
@@ -19,30 +19,30 @@ public class Product {
 
     public Product(String name, int qualityGuaranteePeriod, int productValue) {
         this.name = name;
-        this.qualityGuaranteePeriodObject = new QualityGuaranteePeriod(qualityGuaranteePeriod);
+        this.qualityGuaranteePeriod = new QualityGuaranteePeriod(qualityGuaranteePeriod);
         this.productValue = new ProductValue(productValue);
     }
 
     protected Product(String name, QualityGuaranteePeriod qualityGuaranteePeriod, ProductValue productValue) {
         this.name = name;
-        this.qualityGuaranteePeriodObject = qualityGuaranteePeriod;
+        this.qualityGuaranteePeriod = qualityGuaranteePeriod;
         this.productValue = productValue;
     }
 
     @Override
     public String toString() {
-        return this.name + ", " + this.qualityGuaranteePeriodObject.getRemainingDays() + ", " + this.productValue.value;
+        return this.name + ", " + this.qualityGuaranteePeriod.getRemainingDays() + ", " + this.productValue.value;
     }
 
-    void updateValueIfExpiration() {
+    protected void updateValueIfExpiration() {
         productValue.downgrade(1);
     }
 
-    void updateQualityGuaranteePeriod() {
-        qualityGuaranteePeriodObject.decrease();
+    protected void updateQualityGuaranteePeriod() {
+        qualityGuaranteePeriod.decrease();
     }
 
-    void updateValueBeforeQualityGuaranteePeriodUpdated() {
+    protected void updateValueBeforeQualityGuaranteePeriodUpdated() {
         productValue.downgrade(1);
     }
 
@@ -51,8 +51,9 @@ public class Product {
 
         updateQualityGuaranteePeriod();
 
-        if (qualityGuaranteePeriodObject.getRemainingDays() < 0) {
+        if (qualityGuaranteePeriod.isExpired()) {
             updateValueIfExpiration();
         }
     }
+
 }

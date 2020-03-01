@@ -6,17 +6,17 @@ public class EquipmentProduct extends Product {
     }
 
     @Override
-    void updateValueIfExpiration() {
+    protected void updateValueIfExpiration() {
         //do nothing
     }
 
     @Override
-    void updateQualityGuaranteePeriod() {
+    protected void updateQualityGuaranteePeriod() {
         //do nothing
     }
 
     @Override
-    void updateValueBeforeQualityGuaranteePeriodUpdated() {
+    protected void updateValueBeforeQualityGuaranteePeriodUpdated() {
         //do nothing
     }
 }

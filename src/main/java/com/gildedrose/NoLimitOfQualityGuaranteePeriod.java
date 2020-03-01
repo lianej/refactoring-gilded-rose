@@ -9,4 +9,9 @@ public class NoLimitOfQualityGuaranteePeriod extends QualityGuaranteePeriod {
     public void decrease() {
         //do nothing
     }
+
+    @Override
+    public boolean isExpired() {
+        return false;
+    }
 }

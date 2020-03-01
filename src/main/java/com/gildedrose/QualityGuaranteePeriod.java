@@ -13,4 +13,8 @@ public class QualityGuaranteePeriod {
     public void decrease(){
        this.remainingDays -= 1;
     }
+
+    public boolean isExpired() {
+        return this.remainingDays < 0;
+    }
 }

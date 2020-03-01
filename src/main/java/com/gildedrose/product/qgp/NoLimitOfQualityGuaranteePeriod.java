@@ -1,6 +1,6 @@
 package com.gildedrose.product.qgp;
 
-public class NoLimitOfQualityGuaranteePeriod extends QualityGuaranteePeriod {
+public class NoLimitOfQualityGuaranteePeriod extends NormalQualityGuaranteePeriod {
     public NoLimitOfQualityGuaranteePeriod(int days) {
         super(days);
     }

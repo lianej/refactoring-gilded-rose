@@ -2,7 +2,7 @@ package com.gildedrose.product.value;
 
 import com.gildedrose.product.qgp.QualityGuaranteePeriod;
 
-public class BackstagePassesProductValue extends ProductValue {
+public class BackstagePassesProductValue extends NormalProductValue {
     private QualityGuaranteePeriod qualityGuaranteePeriod;
 
     public BackstagePassesProductValue(int value, QualityGuaranteePeriod qualityGuaranteePeriod) {

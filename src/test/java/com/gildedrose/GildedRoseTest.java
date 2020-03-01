@@ -1,6 +1,7 @@
 package com.gildedrose;
 
 import com.gildedrose.product.Product;
+import com.gildedrose.product.ProductFactory;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

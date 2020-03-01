@@ -1,20 +1,9 @@
 package com.gildedrose.product.qgp;
 
-import lombok.Getter;
+public interface QualityGuaranteePeriod {
+    void update();
 
-@Getter
-public class QualityGuaranteePeriod {
-    private int remainingDays;
+    boolean isExpired();
 
-    public QualityGuaranteePeriod(int days) {
-        this.remainingDays = days;
-    }
-
-    public void update(){
-       this.remainingDays -= 1;
-    }
-
-    public boolean isExpired() {
-        return this.remainingDays < 0;
-    }
+    int getRemainingDays();
 }

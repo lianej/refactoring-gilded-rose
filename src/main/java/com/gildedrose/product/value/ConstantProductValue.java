@@ -1,6 +1,6 @@
 package com.gildedrose.product.value;
 
-public class ConstantProductValue extends ProductValue {
+public class ConstantProductValue extends NormalProductValue {
     public ConstantProductValue(int value) {
         super(value);
     }

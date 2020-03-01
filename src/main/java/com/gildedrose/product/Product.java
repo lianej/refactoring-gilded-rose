@@ -1,5 +1,7 @@
-package com.gildedrose;
+package com.gildedrose.product;
 
+import com.gildedrose.product.qgp.QualityGuaranteePeriod;
+import com.gildedrose.product.value.ProductValue;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

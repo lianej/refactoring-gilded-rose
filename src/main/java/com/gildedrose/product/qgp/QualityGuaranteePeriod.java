@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.product.qgp;
 
 import lombok.Getter;
 

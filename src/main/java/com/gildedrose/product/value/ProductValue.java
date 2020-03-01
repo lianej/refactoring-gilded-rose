@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.product.value;
 
 import lombok.Getter;
 
@@ -12,15 +12,15 @@ public class ProductValue {
         this.value = value;
     }
 
-    public void upgrade(int delta) {
+    protected final void upgrade(int delta) {
         this.value = Math.min(this.maxValue, this.value + delta);
     }
 
-    public void downgrade(int delta) {
+    protected final void downgrade(int delta) {
         this.value = Math.max(this.minValue, this.value - delta);
     }
 
-    public void lossValue(){
+    protected final void lossValue(){
         this.value = minValue;
     }
 

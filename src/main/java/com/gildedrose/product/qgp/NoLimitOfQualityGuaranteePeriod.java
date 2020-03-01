@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.product.qgp;
 
 public class NoLimitOfQualityGuaranteePeriod extends QualityGuaranteePeriod {
     public NoLimitOfQualityGuaranteePeriod(int days) {

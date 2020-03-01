@@ -1,5 +1,10 @@
 package com.gildedrose;
 
+import com.gildedrose.product.AgedProduct;
+import com.gildedrose.product.BackstagePassesProduct;
+import com.gildedrose.product.EquipmentProduct;
+import com.gildedrose.product.Product;
+
 public class ProductFactory {
     public static final String PRODUCT_SULFURAS = "Sulfuras, Hand of Ragnaros";
     public static final String PRODUCT_BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";

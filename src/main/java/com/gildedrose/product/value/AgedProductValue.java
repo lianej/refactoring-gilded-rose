@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.product.value;
 
 public class AgedProductValue extends ProductValue {
 

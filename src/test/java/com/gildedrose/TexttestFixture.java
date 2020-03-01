@@ -5,17 +5,17 @@ public class TexttestFixture {
         System.out.println("OMGHAI!");
 
         Product[] products = new Product[] {
-                new Product("+5 Dexterity Vest", 10, 20), //
-                new Product("Aged Brie", 2, 0), //
-                new Product("Elixir of the Mongoose", 5, 7), //
-                new Product("Sulfuras, Hand of Ragnaros", 0, 80), //
-                new Product("Sulfuras, Hand of Ragnaros", -1, 80),
-                new Product("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                new Product("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-                new Product("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-                new Product("Backstage passes to a TAFKAL80ETC concert", 1, 20),
+                ProductFactory.newProduct("+5 Dexterity Vest", 10, 20), //
+                ProductFactory.newProduct("Aged Brie", 2, 0), //
+                ProductFactory.newProduct("Elixir of the Mongoose", 5, 7), //
+                ProductFactory.newProduct("Sulfuras, Hand of Ragnaros", 0, 80), //
+                ProductFactory.newProduct("Sulfuras, Hand of Ragnaros", -1, 80),
+                ProductFactory.newProduct("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                ProductFactory.newProduct("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+                ProductFactory.newProduct("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+                ProductFactory.newProduct("Backstage passes to a TAFKAL80ETC concert", 1, 20),
                 // this conjured item does not work properly yet
-                new Product("Conjured Mana Cake", 3, 6)
+                ProductFactory.newProduct("Conjured Mana Cake", 3, 6)
         };
 
         GildedRose app = new GildedRose(products);

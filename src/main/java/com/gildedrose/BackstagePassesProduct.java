@@ -12,19 +12,15 @@ public class BackstagePassesProduct extends Product {
 
     @Override
     void updateValueBeforeQualityGuaranteePeriodUpdated() {
-        int valueDelta = calculateValueOfUpgrade();
-        productValue.upgrade(valueDelta);
-
-    }
-
-    private int calculateValueOfUpgrade() {
-        int qualityGuaranteePeriod = getQualityGuaranteePeriod();
+        int qualityGuaranteePeriod = getQualityGuaranteePeriodObject().getRemainingDays();
         if (qualityGuaranteePeriod < 6) {
-            return 3;
+            productValue.upgrade(3);
         } else if (qualityGuaranteePeriod < 11) {
-            return 2;
+            productValue.upgrade(2);
         } else {
-            return 1;
+            productValue.upgrade(1);
         }
+
     }
+
 }

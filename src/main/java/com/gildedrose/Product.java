@@ -9,7 +9,7 @@ public class Product {
 
     protected String name;
 
-    protected int qualityGuaranteePeriod;
+    protected QualityGuaranteePeriod qualityGuaranteePeriodObject;
 
     protected ProductValue productValue;
 
@@ -19,17 +19,19 @@ public class Product {
 
     public Product(String name, int qualityGuaranteePeriod, int productValue) {
         this.name = name;
-        this.qualityGuaranteePeriod = qualityGuaranteePeriod;
+        this.qualityGuaranteePeriodObject = new QualityGuaranteePeriod(qualityGuaranteePeriod);
         this.productValue = new ProductValue(productValue);
+    }
+
+    protected Product(String name, QualityGuaranteePeriod qualityGuaranteePeriod, ProductValue productValue) {
+        this.name = name;
+        this.qualityGuaranteePeriodObject = qualityGuaranteePeriod;
+        this.productValue = productValue;
     }
 
     @Override
     public String toString() {
-        return this.name + ", " + this.qualityGuaranteePeriod + ", " + this.productValue.value;
-    }
-
-    void decrementQualityGuaranteePeriod() {
-        qualityGuaranteePeriod = getQualityGuaranteePeriod() - 1;
+        return this.name + ", " + this.qualityGuaranteePeriodObject.getRemainingDays() + ", " + this.productValue.value;
     }
 
     void updateValueIfExpiration() {
@@ -37,19 +39,19 @@ public class Product {
     }
 
     void updateQualityGuaranteePeriod() {
-        decrementQualityGuaranteePeriod();
+        qualityGuaranteePeriodObject.decrease();
     }
 
     void updateValueBeforeQualityGuaranteePeriodUpdated() {
         productValue.downgrade(1);
     }
 
-    void updateValue() {
+    public void updateValue() {
         updateValueBeforeQualityGuaranteePeriodUpdated();
 
         updateQualityGuaranteePeriod();
 
-        if (getQualityGuaranteePeriod() < 0) {
+        if (qualityGuaranteePeriodObject.getRemainingDays() < 0) {
             updateValueIfExpiration();
         }
     }

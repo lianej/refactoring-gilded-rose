@@ -1,8 +1,6 @@
 package com.gildedrose.product;
 
-import com.gildedrose.product.qgp.NormalQualityGuaranteePeriod;
 import com.gildedrose.product.qgp.QualityGuaranteePeriod;
-import com.gildedrose.product.value.NormalProductValue;
 import com.gildedrose.product.value.ProductValue;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,10 +21,10 @@ public class Product {
         return productValue.getValue();
     }
 
-    public Product(String name, int qualityGuaranteePeriod, int productValue) {
+    public Product(String name, QualityGuaranteePeriod qualityGuaranteePeriod, ProductValue productValue) {
         this.name = name;
-        this.qualityGuaranteePeriod = new NormalQualityGuaranteePeriod(qualityGuaranteePeriod);
-        this.productValue = new NormalProductValue(productValue);
+        this.qualityGuaranteePeriod = qualityGuaranteePeriod;
+        this.productValue = productValue;
     }
 
     @Override
